@@ -1,0 +1,12 @@
+:root{
+    --header-color: blue;
+    --footer-color: grey;
+}
+
+.header{
+    background-color: var(--header-color);
+}
+
+.footer{
+    background-color: var(--footer-color);
+}
