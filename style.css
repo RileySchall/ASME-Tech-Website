@@ -1,12 +1,64 @@
 :root{
-    --header-color: blue;
+    --header-color: #1c4587ff;
     --footer-color: grey;
 }
 
+body{
+    font-family: sans-serif;
+    margin: 0px;
+}
+
+h1{
+    text-align: center;
+}
+
+img{
+    width: 100%;
+}
+
+/* Header Section */
+
 .header{
     background-color: var(--header-color);
+    padding: 10px;
 }
+
+.header img{
+    width: 10%;
+}
+
+.header a{
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+}
+
+/* Content Section */
+
+.content{
+    padding: 10px;
+}
+
+/* Footer Section */
 
 .footer{
     background-color: var(--footer-color);
+    padding: 10px;
+}
+
+.footer img{
+    width: 30%;
+}
+
+/* Photo Reel */
+
+.photo-reel{
+    align-items: center;
+}
+
+.photo-reel img{
+    width: 75%;
 }
