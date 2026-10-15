@@ -4,6 +4,7 @@
         <title>Home | ASME-Tech Texas A&M</title>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg">
+        <script src="photoReel.js"></script>
     </head>
     <body>
         <div class="header">
@@ -15,20 +16,16 @@
             <a>Join Now</a>
         </div>
 
-        <div class="content">
+        <div class="content" style="display: grid; grid-template-rows: auto auto auto; row-gap: 20px;">
             <div class="photo-reel-container">
-                <div class="photo-reel">
-                    <img src="Assets/HAND Images/HandDemo1.JPG">
-                    <img src="Assets/HAND Images/HandDemo2.JPG">
-                    <img src="Assets/HAND Images/HandDemo3.JPG">
-
-                    <img src="Assets/HAND Images/HandDemo1.JPG">
-                    <img src="Assets/HAND Images/HandDemo2.JPG">
-                    <img src="Assets/HAND Images/HandDemo3.JPG">
+                <div id="photo-reel">
                 </div>
+                <a onclick="prev();" id="prev"><</a>
+                <a onclick="next();" id="next">></a>
             </div>
+            <script>addPhotoReel();</script>
 
-            <div style="display: grid; grid-template-columns: 50% 50%; margin-top:10px;">
+            <div style="display: flex; grid-template-columns: 50% 50%;">
                 <div style="grid-column: 1;">
                     <h1>Welcome to ASME-Tech</h1>
                     <p>
@@ -38,6 +35,24 @@
                     </p>
                 </div>
                 <img style="grid-column: 2;" src="Assets/HAND Images/BigGroup.JPG">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 50% 50%;">
+                <div style="grid-column: 1;">
+                    <h2>Upcoming Event</h2>
+                    <div style="display: grid; grid-template-columns: 50% 50%; column-gap: 10px;">
+                        <img src="https://placehold.co/400">
+                        <p>Event description</p>
+                    </div>
+                </div>
+
+                <div style="grid-column: 2;">
+                    <h2>Previous Event</h2>
+                    <div style="display: grid; grid-template-columns: 50% 50%; column-gap: 10px;">
+                        <img src="https://placehold.co/400">
+                        <p>Event description</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -53,8 +68,14 @@
 
         <div class="footer">
             <img src="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg">
+            <div>
+                <div  class="social-logo">
+                    <a href="https://discord.com" target="_blank"><img src="Assets/Discord-Symbol-White.svg"></a>
+                </div>
+                
 
-            <p>Thompson Hall, 510 Ross St, College Station, TX 77840</p>
+                <p>Thompson Hall, 510 Ross St, College Station, TX 77840</p>
+            </div>
         </div>
     </body>
 </html>
