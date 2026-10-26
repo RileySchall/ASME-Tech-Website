@@ -1,39 +1,67 @@
-const photoNames = [
-    "Assets/HAND Images/HandDemo1.JPG",
-    "Assets/HAND Images/HandDemo2.JPG",
-    "Assets/HAND Images/HandDemo3.JPG"
+const photoObjs = [
+    { src: "Assets/HAND Images/HandDemo1.JPG", alt: "HAND DDC Demo 1" },
+    { src: "Assets/HAND Images/HandDemo2.JPG", alt: "HAND DDC Demo 2" },
+    { src: "Assets/HAND Images/HandDemo3.JPG", alt: "HAND DDC Demo 3" }
 ];
 
-var photoReelContainer;
-
+let photoReelContainer;
+let photoReel;
 let curPhoto = 0;
 
-function addPhotoReel(){
-    photoReelContainer = document.getElementById("photo-reel");
+function addPhotoReel() {
+    photoReelContainer = document.getElementById("photo-reel-container");
+    photoReel = document.getElementById("photo-reel");
+    
+    if (!photoReel) return;
 
-    photoNames.forEach(photo => {
+    photoReel.innerHTML = "";
+    photoObjs.forEach((photo, index) => {
         let img = document.createElement("img");
-        img.src = photo;
-        photoReelContainer.appendChild(img);
+        img.src = photo.src;
+        img.alt = photo.alt;
+        img.setAttribute("aria-hidden", index === 0 ? "false" : "true");
+        photoReel.appendChild(img);
+    });
+
+    photoReelContainer.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") prev();
+        if (e.key === "ArrowRight") next();
+    });
+
+    let touchStartX = 0;
+    photoReelContainer.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    photoReelContainer.addEventListener("touchend", (e) => {
+        let touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) next();
+        if (touchEndX - touchStartX > 50) prev();
+    }, { passive: true });
+}
+
+function goToPhoto(index) {
+    curPhoto = index;
+    const offset = -curPhoto * 100;
+    photoReel.style.transform = `translateX(${offset}%)`;
+
+    Array.from(photoReel.children).forEach((img, idx) => {
+        img.setAttribute("aria-hidden", idx === curPhoto ? "false" : "true");
     });
 }
 
-function goToPhoto(index){
-    photoReelContainer
-}
-
-function next(){
-    if(curPhoto = photoNames.length-1){
+function next() {
+    if (curPhoto === photoObjs.length - 1) {
         goToPhoto(0);
-    }else{
-        goToPhoto(curPhoto+1);
+    } else {
+        goToPhoto(curPhoto + 1);
     }
 }
 
-function prev(){
-    if(curPhoto = 0){
-        goToPhoto(photoNames.length-1);
-    }else{
-        goToPhoto(curPhoto-1);
+function prev() {
+    if (curPhoto === 0) {
+        goToPhoto(photoObjs.length - 1);
+    } else {
+        goToPhoto(curPhoto - 1);
     }
 }

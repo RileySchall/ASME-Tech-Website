@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home | ASME-Tech Texas A&M</title>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg">
-        <script src="photoReel.js"></script>
+        <script src="photoReel.js" defer></script>
     </head>
     <body>
-        <div class="header">
-            <img src="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg">
-            <a href="index.html">Home</a>
-            <a>About Us</a>
-            <a>ASME National</a>
-            <a>HAND DDC</a>
-            <a>Join Now</a>
-        </div>
+        
+        <header class="header">
+            <img class="nav-logo" src="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg" alt="ASME Texas A&M Logo">
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="index.html" class="active" aria-current="page">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="asme-national.html">ASME National</a>
+                <a href="hand-ddc.html">HAND DDC</a>
+                <a href="join.html">Join Now</a>
+            </nav>
+        </header>
 
-        <div class="content" style="display: grid; grid-template-rows: auto auto auto; row-gap: 20px;">
-            <div class="photo-reel-container">
-                <div id="photo-reel">
+        <main class="content">
+            <section aria-label="Image Carousel">
+                <div class="photo-reel-container" id="photo-reel-container" tabindex="0" aria-label="ASME Event Showcase Photo Reel">
+                    <div id="photo-reel"></div>
+                    <button type="button" onclick="prev();" id="prev" class="carousel-btn" aria-label="Previous Slide">&lt;</button>
+                    <button type="button" onclick="next();" id="next" class="carousel-btn" aria-label="Next Slide">&gt;</button>
                 </div>
-                <a onclick="prev();" id="prev"><</a>
-                <a onclick="next();" id="next">></a>
-            </div>
-            <script>addPhotoReel();</script>
+            </section>
 
-            <div style="display: flex; grid-template-columns: 50% 50%;">
-                <div style="grid-column: 1;">
+            <section class="grid-2col" style="margin-top: 30px;">
+                <div>
                     <h1>Welcome to ASME-Tech</h1>
                     <p>
                         The purpose of this organization shall be the advancement and dissemination of the theory and practice of mechanical engineering,
@@ -34,48 +39,58 @@
                         activities of the Society as well as to promote professional consciousness and fellowship. 
                     </p>
                 </div>
-                <img style="grid-column: 2;" src="Assets/HAND Images/BigGroup.JPG">
-            </div>
+                <img src="Assets/HAND Images/BigGroup.JPG" alt="ASME-Tech Texas A&M Group Photo at Thompson Hall" style="border-radius: 8px;">
+            </section>
 
-            <div style="display: grid; grid-template-columns: 50% 50%;">
-                <div style="grid-column: 1;">
+            <section class="grid-2col-events" style="margin-top: 30px;">
+                <div>
                     <h2>Upcoming Event</h2>
-                    <div style="display: grid; grid-template-columns: 50% 50%; column-gap: 10px;">
-                        <img src="https://placehold.co/400">
-                        <p>Event description</p>
+                    <div class="event-card">
+                        <img src="https://placehold.co/400x300?text=Upcoming+Event" alt="Upcoming Meeting Poster Placeholder">
+                        <p>
+                            <strong>Location:</strong> Thompson Hall, Room 101<br>
+                            <strong>Time:</strong>
+                        </p>
                     </div>
                 </div>
 
-                <div style="grid-column: 2;">
+                <div>
                     <h2>Previous Event</h2>
-                    <div style="display: grid; grid-template-columns: 50% 50%; column-gap: 10px;">
-                        <img src="https://placehold.co/400">
-                        <p>Event description</p>
+                    <div class="event-card">
+                        <img src="https://placehold.co/400x300?text=Previous+Event" alt="Previous Social Event Placeholder">
+                        <p>
+                            <strong>Location:</strong> Thompson Hall, Room 101<br>
+                            <strong>Time:</strong>
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
 
-        <div style="display: grid; grid-template-columns: 50% 50%;">
-            <div style="grid-column: 1;">
-                <h1></h1>
-            </div>
-
-            <div style="grid-column: 2;">
-
-            </div>
-        </div>
-
-        <div class="footer">
-            <img src="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg">
-            <div>
-                <div  class="social-logo">
-                    <a href="https://discord.com" target="_blank"><img src="Assets/Discord-Symbol-White.svg"></a>
+        <footer class="footer">
+            <img src="Assets/ASME_Texas-AM-University-Technology-Student-Section_RGB_White.svg" alt="ASME Texas A&M Logo">
+            <div class="social-logo-container">
+                <div class="social-logo">
+                    <a href="https://discord.gg/6ZxyDg6PJQ" target="_blank" aria-label="Join our Discord Section"><img src="Assets/Social Media Logos/Discord-Symbol-White.svg" alt="Discord Logo"></a>
                 </div>
-                
+
+                <div class="social-logo">
+                    <a href="https://www.instagram.com/asme.tech.tamu/" target="_blank" aria-label="Follow us on Instagram"><img src="Assets/Social Media Logos/Instagram_Glyph_White.svg" alt="Instagram Logo"></a>
+                </div>
+
+                <div class="social-logo">
+                    <a href="mailto:asmetechtamu@gmail.com" target="_blank" aria-label="Send us an email"><img src="Assets/Social Media Logos/email-1-svgrepo-com.svg" alt="Email Icon"></a>
+                </div>
 
                 <p>Thompson Hall, 510 Ross St, College Station, TX 77840</p>
             </div>
-        </div>
+        </footer>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                addPhotoReel();
+                goToPhoto(0);
+            });
+        </script>
     </body>
 </html>
