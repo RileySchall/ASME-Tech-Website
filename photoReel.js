@@ -7,6 +7,7 @@ const photoObjs = [
 let photoReelContainer;
 let photoReel;
 let curPhoto = 0;
+let intervalID = undefined;
 
 function addPhotoReel() {
     photoReelContainer = document.getElementById("photo-reel-container");
@@ -38,6 +39,8 @@ function addPhotoReel() {
         if (touchStartX - touchEndX > 50) next();
         if (touchEndX - touchStartX > 50) prev();
     }, { passive: true });
+
+    resetInterval();
 }
 
 function goToPhoto(index) {
@@ -56,6 +59,7 @@ function next() {
     } else {
         goToPhoto(curPhoto + 1);
     }
+    resetInterval();
 }
 
 function prev() {
@@ -64,4 +68,10 @@ function prev() {
     } else {
         goToPhoto(curPhoto - 1);
     }
+    resetInterval();
+}
+
+function resetInterval(){
+    clearInterval(intervalID);
+    intervalID = setInterval(next, 5000);
 }
